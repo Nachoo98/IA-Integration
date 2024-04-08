@@ -11,7 +11,6 @@ export class TextToImageController {
   @ApiOkResponse({ type: String })
   @ApiOperation({ description: 'Generate an IA image from text input' })
   async generateImageFromText(@Query('input') text: string): Promise<string> {
-    console.log(text)
     return await this.textToImageService.generateImageFromText(text)
   }
 }
