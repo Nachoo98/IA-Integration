@@ -5,6 +5,8 @@ export const environments = registerAs('config', () => {
   return {
     APP_VERSION: process.env.APP_VERSION,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    HUGGING_FACE_URL: process.env.HUGGING_FACE_URL,
+    HUGGING_FACE_TOKEN: process.env.HUGGING_FACE_TOKEN,
   }
 })
 

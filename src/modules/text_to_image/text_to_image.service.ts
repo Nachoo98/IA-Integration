@@ -1,17 +1,31 @@
-import { Injectable } from '@nestjs/common'
-import { promises as fs } from 'fs'
+import { Inject, Injectable } from '@nestjs/common'
+import { ConfigType } from '@nestjs/config'
+import * as fs from 'fs'
+import { environments } from 'src/config/config.module'
 
 @Injectable()
 export class TextToImageService {
-  constructor() {}
+  constructor(
+    @Inject(environments.KEY)
+    private readonly configService: ConfigType<typeof environments>,
+  ) {}
 
-  async generateImageFromText(input: string): Promise<any> {
+  async getIAImages(): Promise<object[]> {
+    const files = fs.readdirSync('./src/images')
+
+    return files.map((f, idx) => {
+      return { id: idx + 1, name: f }
+    })
+  }
+
+  async generateImageFromText(input: string): Promise<object> {
     const headers = {
-      Authorization: 'Bearer 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',
+      Authorization: 'Bearer ' + this.configService.HUGGING_FACE_TOKEN,
     }
+    const url = this.configService.HUGGING_FACE_URL + 'stabilityai/stable-diffusion-xl-base-1.0'
 
     async function query(data) {
-      const response = await fetch('https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0', {
+      const response = await fetch(url, {
         headers,
         method: 'POST',
         body: JSON.stringify(data),
@@ -27,9 +41,9 @@ export class TextToImageService {
 
       const fileName = `${input.replace(/\s+/g, '-')}.png`
       const filePath = './src/images/' + fileName
-      await fs.writeFile(filePath, Buffer.from(imageBytes))
-      console.log(`Image saved to: ${filePath}`)
-      return 'Image created'
+      await fs.promises.writeFile(filePath, Buffer.from(imageBytes))
+
+      return { response: 'Image created', status: 201 }
     } catch (error) {
       console.error(error)
     }
