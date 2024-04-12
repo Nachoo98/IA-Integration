@@ -13,6 +13,8 @@ async function bootstrap() {
     }),
   )
 
+  app.enableCors({ origin: '*' })
+
   setupSecurity(app)
 
   setupSwagger(app)

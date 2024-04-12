@@ -20,12 +20,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@huggingface/inference": "^2.6.7",
     "@langchain/core": "^0.1.46",
     "@langchain/openai": "^0.0.20",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-express": "^10.3.7",
     "@nestjs/swagger": "^7.3.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
@@ -35,6 +36,7 @@
     "install": "^0.13.0",
     "langchain": "^0.1.27",
     "llamaindex": "^0.1.12",
+    "multer": "^1.4.5-lts.1",
     "nest-router": "^1.0.9",
     "npm": "^10.5.0",
     "ravendb": "^5.4.2",

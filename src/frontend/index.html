@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pictionary</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../images/icon/icon.png" type="image/png" />
+  </head>
+  <body>
+    <img src="../images/logo/pictionary.png" id="imagen" />
+    <br />
+    <!-- <h2>Subir Imagen</h2>
+    <form id="uploadForm">
+      <input type="file" id="imageInput" accept="image/*" />
+      <button type="button" onclick="handleUpload()">Subir Imagen</button>
+    </form>
+    <div id="uploadResult"></div> -->
+    <h2>Subir Imagen</h2>
+    <form id="uploadForm">
+      <input type="file" id="imageInput" accept="image/*" />
+      <button type="button" onclick="handleUpload()">Subir Imagen</button>
+    </form>
+    <br />
+    <div id="uploadResult"></div>
+    <br />
+    <h2 for="imageNameInput">Nombre de la Imagen</h2>
+    <br />
+    <input type="text" id="imageNameInput" placeholder="Ej. imagen.jpg" />
+    <button onclick="fetchImageText()">Adivinar</button>
+    <br />
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
