@@ -31,6 +31,9 @@ async function handleUpload() {
   if (response.ok) {
     const data = await response.text()
     document.getElementById('uploadResult').textContent = `Imagen subida: ${data}`
+    const imageElement = document.getElementById('imageResult')
+    imageElement.src = `../images/${data}`
+    imageElement.style.display = 'block'
   } else {
     throw new Error(`Error al subir imagen - Código de estado: ${response.status}`)
   }
