@@ -49,7 +49,7 @@ export const setupSwagger = (app: INestApplication): void => {
 
   const options = new DocumentBuilder()
     .setTitle('Chatbot API')
-    .setDescription('Api created by IT ROCK')
+    .setDescription('Api created by Ignacio González')
     .setVersion('1.0')
     .addBearerAuth()
     .build()
